@@ -1,0 +1,2 @@
+/androidtool/android-sdk-macosx/ndk/20.0.5594570/build/core/add-application.mk:49: /wuzhenghua/media/app/src/main/jni/Application.mk: No such file or directory
+make: *** No rule to make target `/wuzhenghua/media/app/src/main/jni/Application.mk'.  Stop.

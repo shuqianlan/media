@@ -1,0 +1,22 @@
+rm -f /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/lib/x86/*
+rm -f /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/lib/x86/gdbserver
+rm -f /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/lib/x86/gdb.setup
+mkdir -p /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/lib/x86
+echo [x86] "Gdbserver      ": "[i686-linux-android] /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/lib/x86/gdbserver"
+install -p /androidtool/android-sdk-macosx/ndk/20.0.5594570/prebuilt/android-x86/gdbserver/gdbserver /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/lib/x86/gdbserver
+echo [x86] "Gdbsetup       ": "/wuzhenghua/media/app/build/intermediates/ndkBuild/debug/lib/x86/gdb.setup"
+echo "set solib-search-path /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/obj/local/x86" > /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/lib/x86/gdb.setup
+echo "directory /androidtool/android-sdk-macosx/ndk/20.0.5594570/toolchains/llvm/prebuilt/darwin-x86_64/sysroot /androidtool/android-sdk-macosx/ndk/20.0.5594570/sources/cxx-stl/system/include /wuzhenghua/media/app/src/main/jni" >> /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/lib/x86/gdb.setup
+mkdir -p /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/obj/local/x86/objs-debug/encoder
+echo [x86] "Compile++      ": "encoder <= com_phuket_tour_studio_Mp3Encoder.cpp"
+rm -f /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/obj/local/x86/objs-debug/encoder/com_phuket_tour_studio_Mp3Encoder.o
+/androidtool/android-sdk-macosx/ndk/20.0.5594570/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ -MMD -MP -MF /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/obj/local/x86/objs-debug/encoder/com_phuket_tour_studio_Mp3Encoder.o.d -target i686-none-linux-android21 -fdata-sections -ffunction-sections -fstack-protector-strong -funwind-tables -no-canonical-prefixes  --sysroot /androidtool/android-sdk-macosx/ndk/20.0.5594570/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -g -Wno-invalid-command-line-argument -Wno-unused-command-line-argument  -fno-addrsig -fno-exceptions -fno-rtti -fPIC -O0 -UNDEBUG -fno-limit-debug-info  -I/androidtool/android-sdk-macosx/ndk/20.0.5594570/sources/cxx-stl/system/include -I/wuzhenghua/media/app/src/main/jni     -DANDROID  -Wa,--noexecstack -Wformat -Werror=format-security -mstackrealign   -c  /wuzhenghua/media/app/src/main/jni/com_phuket_tour_studio_Mp3Encoder.cpp -o /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/obj/local/x86/objs-debug/encoder/com_phuket_tour_studio_Mp3Encoder.o
+mkdir -p /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/obj/local/x86
+echo [x86] "StaticLibrary  ": "libstdc++.a"
+rm -f /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/obj/local/x86/libstdc++.a
+/androidtool/android-sdk-macosx/ndk/20.0.5594570/toolchains/llvm/prebuilt/darwin-x86_64/bin/i686-linux-android-ar crsD  /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/obj/local/x86/libstdc++.a 
+echo [x86] "SharedLibrary  ": "libencoder.so"
+/androidtool/android-sdk-macosx/ndk/20.0.5594570/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ -Wl,-soname,libencoder.so -shared /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/obj/local/x86/objs-debug/encoder/com_phuket_tour_studio_Mp3Encoder.o /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/obj/local/x86/libstdc++.a -lgcc -Wl,--exclude-libs,libgcc.a -latomic -Wl,--exclude-libs,libatomic.a -target i686-none-linux-android21 -no-canonical-prefixes     -Wl,--build-id -stdlib=libstdc++ -Wl,--no-undefined -Wl,-z,noexecstack -Wl,--warn-shared-textrel -Wl,--fatal-warnings -llog -lstdc++ -lc -lm -o /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/obj/local/x86/libencoder.so
+echo [x86] "Install        ": "libencoder.so => /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/lib/x86/libencoder.so"
+install -p /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/obj/local/x86/libencoder.so /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/lib/x86/libencoder.so
+/androidtool/android-sdk-macosx/ndk/20.0.5594570/toolchains/llvm/prebuilt/darwin-x86_64/bin/i686-linux-android-strip --strip-unneeded  /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/lib/x86/libencoder.so

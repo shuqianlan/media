@@ -1,0 +1,3 @@
+[x86_64] Compile++      : encoder <= com_phuket_tour_studio_Mp3Encoder.cpp
+[x86_64] StaticLibrary  : libstdc++.a
+[x86_64] SharedLibrary  : libencoder.so

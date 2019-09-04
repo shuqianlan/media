@@ -1,0 +1,22 @@
+rm -f /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/lib/armeabi-v7a/*
+rm -f /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/lib/armeabi-v7a/gdbserver
+rm -f /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/lib/armeabi-v7a/gdb.setup
+mkdir -p /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/lib/armeabi-v7a
+echo [armeabi-v7a] "Gdbserver      ": "[arm-linux-androideabi] /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/lib/armeabi-v7a/gdbserver"
+install -p /androidtool/android-sdk-macosx/ndk/20.0.5594570/prebuilt/android-arm/gdbserver/gdbserver /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/lib/armeabi-v7a/gdbserver
+echo [armeabi-v7a] "Gdbsetup       ": "/wuzhenghua/media/app/build/intermediates/ndkBuild/debug/lib/armeabi-v7a/gdb.setup"
+echo "set solib-search-path /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a" > /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/lib/armeabi-v7a/gdb.setup
+echo "directory /androidtool/android-sdk-macosx/ndk/20.0.5594570/toolchains/llvm/prebuilt/darwin-x86_64/sysroot /androidtool/android-sdk-macosx/ndk/20.0.5594570/sources/cxx-stl/system/include /wuzhenghua/media/app/src/main/jni" >> /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/lib/armeabi-v7a/gdb.setup
+mkdir -p /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/objs-debug/encoder
+echo [armeabi-v7a] "Compile++ thumb": "encoder <= com_phuket_tour_studio_Mp3Encoder.cpp"
+rm -f /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/objs-debug/encoder/com_phuket_tour_studio_Mp3Encoder.o
+/androidtool/android-sdk-macosx/ndk/20.0.5594570/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ -MMD -MP -MF /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/objs-debug/encoder/com_phuket_tour_studio_Mp3Encoder.o.d -target armv7-none-linux-androideabi21 -fdata-sections -ffunction-sections -fstack-protector-strong -funwind-tables -no-canonical-prefixes  --sysroot /androidtool/android-sdk-macosx/ndk/20.0.5594570/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -g -Wno-invalid-command-line-argument -Wno-unused-command-line-argument  -fno-addrsig -fno-exceptions -fno-rtti -fpic -march=armv7-a -mthumb -O0 -UNDEBUG -fno-limit-debug-info  -I/androidtool/android-sdk-macosx/ndk/20.0.5594570/sources/cxx-stl/system/include -I/wuzhenghua/media/app/src/main/jni     -DANDROID  -Wa,--noexecstack -Wformat -Werror=format-security   -c  /wuzhenghua/media/app/src/main/jni/com_phuket_tour_studio_Mp3Encoder.cpp -o /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/objs-debug/encoder/com_phuket_tour_studio_Mp3Encoder.o
+mkdir -p /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a
+echo [armeabi-v7a] "StaticLibrary  ": "libstdc++.a"
+rm -f /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libstdc++.a
+/androidtool/android-sdk-macosx/ndk/20.0.5594570/toolchains/llvm/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-ar crsD  /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libstdc++.a 
+echo [armeabi-v7a] "SharedLibrary  ": "libencoder.so"
+/androidtool/android-sdk-macosx/ndk/20.0.5594570/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ -Wl,-soname,libencoder.so -shared /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/objs-debug/encoder/com_phuket_tour_studio_Mp3Encoder.o /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libstdc++.a -lgcc -Wl,--exclude-libs,libgcc.a -latomic -Wl,--exclude-libs,libatomic.a -target armv7-none-linux-androideabi21 -no-canonical-prefixes     -Wl,--build-id -stdlib=libstdc++ -Wl,--no-undefined -Wl,-z,noexecstack -Wl,--warn-shared-textrel -Wl,--fatal-warnings  -llog -lstdc++ -lc -lm -o /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libencoder.so
+echo [armeabi-v7a] "Install        ": "libencoder.so => /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/lib/armeabi-v7a/libencoder.so"
+install -p /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/obj/local/armeabi-v7a/libencoder.so /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/lib/armeabi-v7a/libencoder.so
+/androidtool/android-sdk-macosx/ndk/20.0.5594570/toolchains/llvm/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-strip --strip-unneeded  /wuzhenghua/media/app/build/intermediates/ndkBuild/debug/lib/armeabi-v7a/libencoder.so
